@@ -1,11 +1,19 @@
-<div align="center">
+# 📷 Câmera de Intenção (MVP)
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+Este projeto é um Produto Mínimo Viável (MVP) nascido de um exercício de Design Especulativo, baseado no cenário "O Grande Vazio Digital". 
 
-  <h1>Built with AI Studio</h2>
+## 🧠 O Conceito
+Em um futuro onde a Inteligência Artificial domina e a banalização da memória atinge seu ápice, este aplicativo atua como uma ferramenta de resistência: um "Arquivista de Atrito". Ele inova ao ir na contramão da UX tradicional, adicionando **fricção proposital** ao ato de fotografar.
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+A câmera não tira fotos com um simples clique. Para que a imagem seja salva na galeria, o usuário é obrigado a parar e justificar o momento (por voz ou por texto). Se não houver justificativa, a foto é deletada instantaneamente. O resultado não é apenas uma imagem, mas um documento com real intenção humana.
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## 📖 User Story
+> "Como um usuário saturado do digital, eu quero ser obrigado a gravar um áudio ou digitar uma justificativa no momento do clique, para que a câmera só salve a foto na galeria se houver uma intenção humana real por trás daquele registro."
 
-</div>
+## 🛠️ Tecnologias Utilizadas
+Este MVP foi desenvolvido utilizando:
+* **Next.js** (Framework React)
+* **Tailwind CSS** (Estilização)
+* **Vercel** (Deploy)
+* **Supabase** (Autenticação de Usuários)
+* **Google Stitch / AI Studio** (Prototipagem visual inicial)
