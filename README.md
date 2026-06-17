@@ -1,19 +1,20 @@
-# 📷 Câmera de Intenção (MVP)
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
 
-Este projeto é um Produto Mínimo Viável (MVP) nascido de um exercício de Design Especulativo, baseado no cenário "O Grande Vazio Digital". 
+# Run and deploy your AI Studio app
 
-## 🧠 O Conceito
-Em um futuro onde a Inteligência Artificial domina e a banalização da memória atinge seu ápice, este aplicativo atua como uma ferramenta de resistência: um "Arquivista de Atrito". Ele inova ao ir na contramão da UX tradicional, adicionando **fricção proposital** ao ato de fotografar.
+This contains everything you need to run your app locally.
 
-A câmera não tira fotos com um simples clique. Para que a imagem seja salva na galeria, o usuário é obrigado a parar e justificar o momento (por voz ou por texto). Se não houver justificativa, a foto é deletada instantaneamente. O resultado não é apenas uma imagem, mas um documento com real intenção humana.
+View your app in AI Studio: https://ai.studio/apps/b4cf16c0-a974-45ce-94e8-84c5fadc464c
 
-## 📖 User Story
-> "Como um usuário saturado do digital, eu quero ser obrigado a gravar um áudio ou digitar uma justificativa no momento do clique, para que a câmera só salve a foto na galeria se houver uma intenção humana real por trás daquele registro."
+## Run Locally
 
-## 🛠️ Tecnologias Utilizadas
-Este MVP foi desenvolvido utilizando:
-* **Next.js** (Framework React)
-* **Tailwind CSS** (Estilização)
-* **Vercel** (Deploy)
-* **Supabase** (Autenticação de Usuários)
-* **Google Stitch / AI Studio** (Prototipagem visual inicial)
+**Prerequisites:**  Node.js
+
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

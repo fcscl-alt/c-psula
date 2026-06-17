@@ -1,0 +1,12 @@
+{
+  "name": "Cápsula",
+  "description": "An intentional camera capsule styled in Friendly Brutalism to archive life moments alongside your active intent.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
