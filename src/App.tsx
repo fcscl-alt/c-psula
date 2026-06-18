@@ -5,6 +5,8 @@ import CameraStream from "./components/CameraStream";
 import AudioIntentRecorder from "./components/AudioIntentRecorder";
 import MomentHistoryCard from "./components/MomentHistoryCard";
 import SettingsModal from "./components/SettingsModal";
+import { processPhotoWithGemini } from "./lib/ai";
+import { saveMomentToSupabase } from "./lib/db";
 
 export default function App() {
   // Navigation tabs: "capture" | "history" as requested
@@ -130,30 +132,17 @@ export default function App() {
     const timecode = `CAP-${datesCode}-${timesCode}`;
     const uniqueId = `mom_${Date.now()}`;
 
+    let title = "Momento capturado";
     let reflection = `Momento arquivado na cápsula: "${justification || "Em meditação silenciosa..."}"`;
     let tagsList = ["ATENÇÃO", "PRESENTE", "REGISTRO"];
 
-    // Process using Gemini API Reflection if enabled
     if (settings.aiAssistedTags) {
       try {
-        const response = await fetch("/api/reflect", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            justification: justification,
-            photo: photoBase64
-          })
-        });
-        
-        if (response.ok) {
-          const resData = await response.json();
-          if (resData.reflection && resData.tags) {
-            reflection = resData.reflection;
-            tagsList = resData.tags;
-          }
-        }
+        const aiResult = await processPhotoWithGemini(photoBase64, justification || undefined);
+        title = aiResult.title;
+        reflection = aiResult.reflection;
       } catch (err) {
-        console.warn("Unable to fetch AI reflection from Gemini, continuing with fallback: ", err);
+        console.warn("Erro ao processar foto com Gemini, usando fallback local:", err);
       }
     }
 
@@ -177,11 +166,21 @@ export default function App() {
       location: geo,
     };
 
+    try {
+      await saveMomentToSupabase({
+        title,
+        reflection,
+        description: justification || "Preservação silenciosa.",
+        photo: photoBase64,
+      });
+    } catch (err) {
+      console.error("Erro ao salvar no Supabase:", err);
+    }
+
     const updatedMoments = [newMoment, ...moments];
     setMoments(updatedMoments);
-    localStorage.setItem("capsula_moments_archive", JSON.stringify(updatedMoments));
 
-    // Reset snap indicators
+    // Reset snap indicadores
     setJustification("");
     setAudioUrl(undefined);
     setAudioDuration(0);
